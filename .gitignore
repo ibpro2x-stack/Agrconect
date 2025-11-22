@@ -1,24 +1,69 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
+*.py[codz]
 *$py.class
 
-# Virtual environment
-venv/
-env/
+# C extensions
+*.so
 
 # Distribution / packaging
+.Python
 build/
+develop-eggs/
 dist/
-*.egg-info/
+downloads/
+eggs/
 .eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environment
+.env
+.venv
+env/
+venv/
+
+# Logs
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
 
 # PyInstaller
 *.manifest
 *.spec
 
-# Logs
-*.log
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Django stuff:
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
 
 # OS files
 .DS_Store
@@ -27,3 +72,11 @@ Thumbs.db
 # IDEs
 .vscode/
 .idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+# .idea/
+
+# Additional entries
