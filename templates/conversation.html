@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dm-layout">
+  <aside class="dm-list">
+    <a class="dm-back" href="{{ url_for('inbox') }}">← Back</a>
+    <div class="dm-item dm-current">
+      <img src="{{ url_for('uploads', filename=partner.profile_pic) }}" class="mini-avatar">
+      <div class="dm-meta"><div class="dm-name">{{ partner.username }}</div></div>
+    </div>
+  </aside>
+
+  <section class="dm-convo">
+    <div class="messages-area">
+      {% for m in messages %}
+        {% if m.sender_id == current_user.id %}
+          <div class="message sent"><div class="bubble">You: {{ m.text }}</div></div>
+        {% else %}
+          <div class="message received"><img src="{{ url_for('uploads', filename=partner.profile_pic) }}" class="mini-avatar"><div class="bubble">{{ partner.username }}: {{ m.text }}</div></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <form method="POST" class="dm-form">
+      <input name="text" placeholder="Write a message..." required>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</div>
+{% endblock %}
+

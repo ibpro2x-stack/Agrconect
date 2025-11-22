@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<div class="admin-grid">
+  <section class="members">
+    <h3>All Members</h3>
+    <ul>
+      {% for u in users %}
+      <li>
+        <img src="{{ url_for('uploads', filename=u.profile_pic) }}" class="mini-avatar">
+        {{ u.username }} — {{ u.email }} — {{ u.role }}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="products">
+    <h3>Products</h3>
+    {% for p in products %}
+      <div class="admin-product">
+        <img src="{{ url_for('uploads', filename=p.image) }}" class="mini-thumb">
+        <div>{{ p.title }} — {{ p.price_rwf }} RWF — by {{ p.seller.username }}</div>
+        <div class="small-comments">
+          {% for c in p.comments %}
+            <div>{{ c.user.username }}: {{ c.text }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+</div>
+{% endblock %}

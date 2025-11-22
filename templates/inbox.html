@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dm-layout">
+  <aside class="dm-list">
+    <h3>Chats</h3>
+    {% for p in partners %}
+      <a class="dm-item" href="{{ url_for('conversation', partner_id=p.user.id) }}">
+        <img src="{{ url_for('uploads', filename=p.user.profile_pic) }}" class="mini-avatar">
+        <div class="dm-meta">
+          <div class="dm-name">{{ p.user.username }}</div>
+          <div class="dm-last">{{ p.last.text[:40] }}</div>
+        </div>
+        <div class="dm-count">{{ p.count }}</div>
+      </a>
+    {% endfor %}
+  </aside>
+  <section class="dm-empty">
+    <p>Select a chat to open conversation</p>
+  </section>
+</div>
+{% endblock %}

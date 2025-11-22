@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="post-card">
+  <header class="post-header">
+    <img class="avatar" src="{{ url_for('uploads', filename=product.seller.profile_pic) }}">
+    <div class="post-user">
+      <div class="username">{{ product.seller.username }}</div>
+      <div class="posted-time">{{ product.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
+    </div>
+  </header>
+  <div class="post-image-wrap">
+    <img class="post-image" src="{{ url_for('uploads', filename=product.image) }}">
+  </div>
+  <div class="post-body">
+    <h3>{{ product.title }} — {{ product.price_rwf }} RWF</h3>
+    <p>{{ product.description }}</p>
+
+    <div class="comments">
+      <h4>Comments</h4>
+      {% for c in product.comments %}
+        <div class="comment"><strong>{{ c.user.username }}:</strong> {{ c.text }}</div>
+      {% endfor %}
+      {% if current_user.is_authenticated %}
+      <form method="POST" action="{{ url_for('comment', pid=product.id) }}">
+        <input name="text" placeholder="Add a comment..." required>
+        <button type="submit">Post</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</article>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="feed-wrap">
+  {% for p in products %}
+  <article class="post-card">
+    <header class="post-header">
+      <img class="avatar" src="{{ url_for('uploads', filename=p.seller.profile_pic) }}">
+      <div class="post-user">
+        <div class="username">{{ p.seller.username }}</div>
+        <div class="posted-time">{{ p.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
+      </div>
+    </header>
+
+    <div class="post-image-wrap">
+      <img class="post-image" src="{{ url_for('uploads', filename=p.image) }}">
+    </div>
+
+    <div class="post-body">
+      <h3 class="title">{{ p.title }} — {{ p.price_rwf }} RWF</h3>
+      <p>{{ p.description }}</p>
+
+      <div class="post-actions">
+        <a href="{{ url_for('product_detail', pid=p.id) }}">View</a>
+        {% if current_user.is_authenticated and current_user.role != 'admin' %}
+        <form class="inline" action="{{ url_for('send_message', receiver_id=p.seller_id, product_id=p.id) }}" method="POST">
+          <input type="text" name="text" placeholder="Message seller..." required>
+          <button type="submit">Send</button>
+        </form>
+        {% endif %}
+      </div>
+
+      <div class="comments">
+        <strong>Comments</strong>
+        {% for c in p.comments %}
+          <div class="comment"><strong>{{ c.user.username }}:</strong> {{ c.text }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

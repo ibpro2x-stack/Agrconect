@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card">
+  <h2>Upload Product</h2>
+  <form method="POST" enctype="multipart/form-data">
+    <input name="title" placeholder="Product title" required>
+    <textarea name="description" placeholder="Description"></textarea>
+    <input name="price" placeholder="Price (RWF)" type="number" required>
+    <label>Product image</label>
+    <input type="file" name="image" accept="image/*" required>
+    <button type="submit">Upload</button>
+  </form>
+</div>
+{% endblock %}

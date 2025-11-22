@@ -1,0 +1,76 @@
+/* layout */
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial; background:#fafafa; margin:0; }
+.app { display:flex; min-height:100vh; }
+
+/* sidebar */
+.sidebar { width:220px; background:#fff; border-right:1px solid #e6e6e6; padding:18px 12px; box-sizing:border-box; }
+.brand { font-weight:700; font-size:20px; text-decoration:none; color:#111; display:block; margin-bottom:12px; }
+.sidebar-avatar { width:64px; height:64px; border-radius:50%; object-fit:cover; display:block; margin-bottom:8px; }
+.profile { text-align:center; margin-bottom:12px; }
+.profile-name { font-weight:600; color:#333; }
+.menu a { display:block; padding:8px 10px; color:#0073e6; text-decoration:none; border-radius:6px; margin-bottom:6px; }
+.menu a:hover { background:#f0f8ff; }
+
+/* main */
+.main { flex:1; padding:18px; box-sizing:border-box; }
+
+/* flash */
+.flashwrap { margin-bottom:12px; }
+.flash { padding:8px 10px; margin-bottom:6px; border-radius:6px; }
+.flash.success { background:#e6ffed; color:#006a2e; }
+.flash.warning { background:#fff4e5; color:#8a5a00; }
+.flash.danger { background:#ffe6e6; color:#7a0b0b; }
+
+/* feed & posts */
+.feed-wrap { display:flex; flex-direction:column; gap:18px; align-items:center; }
+.post-card { width:600px; background:#fff; border:1px solid #e6e6e6; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.03); }
+.post-header { display:flex; align-items:center; padding:12px; gap:10px; }
+.avatar { width:48px; height:48px; border-radius:50%; object-fit:cover; }
+.post-user .username { font-weight:700; }
+.post-image-wrap { width:100%; max-height:520px; overflow:hidden; background:#000; display:flex; justify-content:center; align-items:center; }
+.post-image { width:100%; object-fit:cover; display:block; }
+.post-body { padding:12px; }
+.title { margin:0 0 8px 0; }
+.post-actions { margin-top:10px; display:flex; gap:10px; align-items:center; }
+.inline { display:inline-flex; gap:6px; margin-left:6px; }
+.inline input[type=text] { padding:6px; border-radius:6px; border:1px solid #ddd; }
+.comments { margin-top:12px; }
+.comment { padding:6px 0; border-top:1px solid #f2f2f2; }
+
+/* forms */
+.form-card { width:480px; margin:20px auto; background:#fff; padding:18px; border-radius:8px; border:1px solid #eee; }
+.form-card input, .form-card textarea, .form-card select { width:100%; padding:10px; margin:6px 0; border:1px solid #ddd; border-radius:6px; box-sizing:border-box; }
+
+/* own-product highlight */
+.post-card.own-product { border:2px solid #1da1f2; }
+
+/* admin grid */
+.admin-grid { display:flex; gap:20px; align-items:flex-start; }
+.members { width:260px; background:#fff; padding:12px; border-radius:8px; border:1px solid #eee; }
+.products { flex:1; background:#fff; padding:12px; border-radius:8px; border:1px solid #eee; }
+.mini-avatar { width:36px; height:36px; border-radius:50%; object-fit:cover; margin-right:8px; }
+.mini-thumb { width:80px; height:60px; object-fit:cover; }
+
+/* DM layout */
+.dm-layout { display:flex; gap:12px; align-items:flex-start; }
+.dm-list { width:260px; background:#fff; padding:12px; border-radius:8px; border:1px solid #eee; }
+.dm-item { display:flex; gap:10px; align-items:center; padding:8px; text-decoration:none; color:inherit; border-radius:6px; margin-bottom:8px; }
+.dm-item:hover { background:#f7faff; }
+.dm-meta { flex:1; }
+.dm-count { background:#e6f7ff; padding:4px 8px; border-radius:12px; color:#0073e6; }
+.dm-convo { flex:1; background:#fff; padding:12px; border-radius:8px; border:1px solid #eee; display:flex; flex-direction:column; height:70vh; }
+.messages-area { flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:8px; padding:4px; }
+.message { display:flex; gap:8px; }
+.message.sent { justify-content:flex-end; }
+.message .bubble { padding:8px 10px; border-radius:12px; max-width:70%; }
+.message.sent .bubble { background:#dcf8c6; }
+.message.received .bubble { background:#f1f0f0; }
+.dm-form { display:flex; gap:8px; margin-top:8px; }
+.dm-form input { flex:1; padding:8px; border-radius:8px; border:1px solid #ddd; }
+
+/* responsive */
+@media (max-width:900px) {
+  .sidebar { display:none; }
+  .post-card { width:100%; }
+  .form-card { width:95%; }
+}

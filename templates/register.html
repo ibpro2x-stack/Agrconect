@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card">
+  <h2>Register</h2>
+  <form method="POST" enctype="multipart/form-data">
+    <input name="username" placeholder="Username" required>
+    <input name="email" placeholder="Email" type="email" required>
+    <input name="password" placeholder="Password" type="password" required>
+    <select name="role" required>
+      <option value="customer">Customer</option>
+      <option value="seller">Seller</option>
+    </select>
+    <label>Profile picture (optional)</label>
+    <input type="file" name="profile_pic" accept="image/*">
+    <button type="submit">Register</button>
+  </form>
+  <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+</div>
+{% endblock %}

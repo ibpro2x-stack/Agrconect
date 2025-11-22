@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Customer Dashboard</h2>
+<div class="feed-wrap">
+  {% for p in products %}
+  <article class="post-card">
+    <header class="post-header">
+      <img class="avatar" src="{{ url_for('uploads', filename=p.seller.profile_pic) }}">
+      <div class="post-user">
+        <div class="username">{{ p.seller.username }}</div>
+        <div class="posted-time">{{ p.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
+      </div>
+    </header>
+
+    <div class="post-image-wrap"><img class="post-image" src="{{ url_for('uploads', filename=p.image) }}"></div>
+
+    <div class="post-body">
+      <h3>{{ p.title }} — {{ p.price_rwf }} RWF</h3>
+      <p>{{ p.description }}</p>
+
+      <div class="comments">
+        {% for c in p.comments %}
+          <div class="comment"><strong>{{ c.user.username }}:</strong> {{ c.text }}</div>
+        {% endfor %}
+      </div>
+
+      <form method="POST" action="{{ url_for('send_message', receiver_id=p.seller_id, product_id=p.id) }}">
+        <input name="text" placeholder="Message seller..." required>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
