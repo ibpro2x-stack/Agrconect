@@ -10,8 +10,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(200), unique=True, nullable=False)
     password_hash = db.Column(db.String(200), nullable=False)
-    role = db.Column(db.String(20), nullable=False, default='customer')  # 'seller' | 'customer' | 'admin'
-    profile_image = db.Column(db.String(300), nullable=True)  # filename in static/uploads
+    role = db.Column(db.String(20), nullable=False, default='customer')
+    profile_image = db.Column(db.String(300), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     products = db.relationship('Product', backref='seller', lazy=True)

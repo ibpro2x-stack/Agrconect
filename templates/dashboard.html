@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Your Dashboard</h2>
+
+<a href="{{ url_for('upload') }}" class="btn">Upload New Product</a>
+
+{% if products %}
+<div class="product-grid">
+    {% for p in products %}
+    <div class="product-card">
+        <img src="{{ url_for('uploads', filename=p.image) }}" class="product-img">
+
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.description }}</p>
+        <strong>{{ p.price_rwf }} RWF</strong>
+
+        <div class="comments">
+            {% for c in p.comments %}
+            <div class="comment">
+                <strong>{{ c.user.username }}:</strong> {{ c.text }}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>You have not uploaded any products yet.</p>
+{% endif %}
+
+{% endblock %}
